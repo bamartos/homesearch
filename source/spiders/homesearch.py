@@ -63,7 +63,8 @@ class taNeaSpider(scrapy.Spider):
     def parseadds(self, response):
         #print response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li')
         #print response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li/div/@data-item-id/text()')
-        print response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li[1]/div/ul[1]/li[1]/text()').encode('utf-8')
+        #print response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li[1]/div/ul[1]/li[1]/text()').encode('utf-8')
+	print response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li[1]/div/ul[1]/li[1]/text()')
 
 
 
