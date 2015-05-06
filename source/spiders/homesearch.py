@@ -28,8 +28,12 @@ class taNeaSpider(scrapy.Spider):
 
         resultpages = self.getrangeofpages(response)
         for i in range(1, resultpages+1):
-            response.replace(url="http://www.hemnet.se/resultat?page="+str(i))
+            print "#"*80
+            print 'Page:http://www.hemnet.se/resultat?page='+str(i)
+            response = response.replace(response.url="http://www.hemnet.se/resultat?page="+str(i))
+            print response.
             print self.parseadds(response)
+            print "#"*80
 
 
         #add rest result urls
@@ -63,16 +67,25 @@ class taNeaSpider(scrapy.Spider):
     def parseadds(self, response):
         #print response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li')
         #print response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li/div/@data-item-id/text()')
-        #print response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li[1]/div/ul[1]/li[1]/text()').encode('utf-8')
-	print response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li[1]/div/ul[1]/li[1]/text()')
-
-
-
-
-
-
-          
-
+        #Show pages
+        #return response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li[1]/div/ul[1]/li[1]/text()').extract()
+        #Get Add id item
+        #return  response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li/div/@data-item-id').extract()
+        #Get Price
+        #responeselist = response.xpath('/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li/div/ul/li/text()').extract()
+        ######################################
+        #Take the list of the results
+        xpath ='/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul/li/div/@data-item-id'
+        #xpath = '/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/p
+        #xpath = '/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li[1]'
+        #Price Xpath
+        #xpath = '/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]//li/div/ul/li'
+        #Everything Xpath?
+        #xpath = '/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li/div/ul/li'
+        #return [x.encode('utf-8') for x in response.xpath(xpath).extract()]
+        return response.xpath(xpath).extract()
+        #return len(response.xpath(xpath).extract())#[0].encode('utf-8')
+        #/html/body/div[1]/div/div[2]/div[2]/div[1]/div[5]/ul[2]/li
 
 """	title = "**************** OK  ****************"
 
